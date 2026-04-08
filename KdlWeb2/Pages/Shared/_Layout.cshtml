@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] — КДЛ Медик</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --pink:      #e8688a;
+            --pink-dark: #c94f70;
+            --pink-soft: #f9d0db;
+            --pink-bg:   #fff5f7;
+            --rose:      #be185d;
+            --text:      #5b1a32;
+            --muted:     #9c6b7d;
+            --border:    #f2c4d0;
+            --white:     #ffffff;
+        }
+
+        body {
+            font-family: Segoe UI, sans-serif;
+            background: var(--pink-bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--white);
+            border-bottom: 2px solid var(--pink-soft);
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 12px rgba(232,104,138,0.10);
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--pink-dark);
+            text-decoration: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-left: 4px;
+            transition: background 0.2s;
+        }
+
+        nav a:hover { background: var(--pink-soft); }
+        nav a.active { background: var(--pink); color: white; }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--pink-dark);
+            margin-bottom: 1.2rem;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--pink-soft);
+        }
+
+        /* Таблица */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(232,104,138,0.10);
+        }
+
+        th {
+            background: var(--pink);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 0.875rem;
+        }
+
+        td {
+            padding: 11px 16px;
+            border-bottom: 1px solid var(--pink-soft);
+            font-size: 0.9rem;
+        }
+
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: #fff0f3; }
+
+        /* Форма */
+        .form-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 2rem;
+            max-width: 460px;
+            box-shadow: 0 2px 12px rgba(232,104,138,0.10);
+            border: 1px solid var(--border);
+        }
+
+        .form-group { margin-bottom: 1.1rem; }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            color: var(--text);
+            background: white;
+        }
+
+        input:focus, select:focus { border-color: var(--pink); }
+
+        .btn {
+            display: inline-block;
+            background: var(--pink);
+            color: white;
+            border: none;
+            padding: 11px 28px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn:hover { background: var(--pink-dark); }
+        .btn-full { width: 100%; text-align: center; }
+
+        .success {
+            background: #fce7ef;
+            color: var(--rose);
+            border: 1px solid var(--pink);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .error { color: #c0002f; font-size: 0.8rem; margin-top: 3px; }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">🌸 КДЛ Медик</a>
+        <nav>
+            <a href="/" class="@(ViewData["Page"]?.ToString() == "index" ? "active" : "")">Анализы</a>
+            <a href="/Register" class="@(ViewData["Page"]?.ToString() == "register" ? "active" : "")">Записаться</a>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer>© 2024 КДЛ Медик — Клинико-диагностическая лаборатория</footer>
+</body>
+</html>

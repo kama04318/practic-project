@@ -1,0 +1,40 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Анализы";
+    ViewData["Page"] = "index";
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="success">✅ @TempData["Success"]</div>
+}
+
+<h2>Список анализов</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Категория</th>
+            <th>Цена</th>
+            <th>Срок готовности</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>ОАК (общий анализ крови)</td><td>Общеклинические</td><td>450 ₽</td><td>1 день</td></tr>
+        <tr><td>ОАМ (общий анализ мочи)</td><td>Общеклинические</td><td>350 ₽</td><td>1 день</td></tr>
+        <tr><td>Глюкоза крови</td><td>Биохимия</td><td>300 ₽</td><td>1 день</td></tr>
+        <tr><td>Биохимия крови</td><td>Биохимия</td><td>1200 ₽</td><td>2 дня</td></tr>
+        <tr><td>ВИЧ 1/2 (антитела)</td><td>Инфекции</td><td>600 ₽</td><td>2 дня</td></tr>
+        <tr><td>Гепатит B (HBsAg)</td><td>Инфекции</td><td>550 ₽</td><td>2 дня</td></tr>
+        <tr><td>Гепатит C (anti-HCV)</td><td>Инфекции</td><td>550 ₽</td><td>2 дня</td></tr>
+        <tr><td>ТТГ (тиреотропный гормон)</td><td>Гормоны</td><td>750 ₽</td><td>2 дня</td></tr>
+        <tr><td>Группа крови + резус</td><td>Общеклинические</td><td>500 ₽</td><td>1 день</td></tr>
+        <tr><td>СОЭ</td><td>Общеклинические</td><td>250 ₽</td><td>1 день</td></tr>
+    </tbody>
+</table>
+
+<div style="margin-top: 1.5rem;">
+    <a href="/Register" class="btn">Записаться на анализ →</a>
+</div>

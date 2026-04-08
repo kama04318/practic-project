@@ -1,0 +1,53 @@
+@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Запись";
+    ViewData["Page"] = "register";
+}
+
+<h2>Запись на анализ</h2>
+
+<div class="form-card">
+    <form method="post">
+        <div class="form-group">
+            <label>ФИО пациента</label>
+            <input name="FullName" value="@Model.FullName" placeholder="Иванов Иван Иванович"/>
+            @if (Model.Errors.ContainsKey("FullName"))
+            {
+                <div class="error">@Model.Errors["FullName"]</div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label>Телефон</label>
+            <input name="Phone" value="@Model.Phone" placeholder="+7 (999) 123-45-67"/>
+            @if (Model.Errors.ContainsKey("Phone"))
+            {
+                <div class="error">@Model.Errors["Phone"]</div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label>Выберите анализ</label>
+            <select name="Analysis">
+                <option value="">— Выберите анализ —</option>
+                <option>ОАК (общий анализ крови) — 450 ₽</option>
+                <option>ОАМ (общий анализ мочи) — 350 ₽</option>
+                <option>Глюкоза крови — 300 ₽</option>
+                <option>Биохимия крови — 1200 ₽</option>
+                <option>ВИЧ 1/2 (антитела) — 600 ₽</option>
+                <option>Гепатит B (HBsAg) — 550 ₽</option>
+                <option>Гепатит C (anti-HCV) — 550 ₽</option>
+                <option>ТТГ (тиреотропный гормон) — 750 ₽</option>
+                <option>Группа крови + резус — 500 ₽</option>
+                <option>СОЭ — 250 ₽</option>
+            </select>
+            @if (Model.Errors.ContainsKey("Analysis"))
+            {
+                <div class="error">@Model.Errors["Analysis"]</div>
+            }
+        </div>
+
+        <button type="submit" class="btn btn-full">Записаться →</button>
+    </form>
+</div>
